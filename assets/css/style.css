@@ -1,9 +1,20 @@
+/**************************************/
+/* Custom variables */
 :root {
+  /* Fonts */
   --font-family: 'Hanken Grotesk', sans-serif;
 
   /* Colors */
   --white: #fff;
   --light-blue: hsl(241, 100%, 89%);
+  --dark-navy: hsl(224, 30%, 27%);
+  --light-navy: #9799a8;
+  --light-red: #fff6f6;
+  --red: #ff5555;
+  --yellow: #ffb21e;
+  --green: #00bb8f;
+  --blue: #1125d6;
+  --very-light-blue: #ecf2ff;
   --gradient-circle: linear-gradient(
     to bottom,
     hsla(256, 72%, 46%, 1),
@@ -16,6 +27,7 @@
   );
 }
 
+/* Basic reset */
 *,
 *::before,
 *::after {
@@ -32,6 +44,17 @@ body {
   font-size: 1.6rem;
   font-family: var(--font-family);
   font-weight: 500;
+  background-color: var(--very-light-blue);
+}
+
+/**************************************/
+/* Main layout */
+.container {
+  min-height: 100vh;
+}
+
+.card {
+  background-color: var(--white);
 }
 
 .result-box {
@@ -43,7 +66,8 @@ body {
   border-bottom-right-radius: 3.2rem;
 }
 
-.result-box-title {
+.result-box-title,
+.summary-box-title {
   font-size: 1.8rem;
   margin-bottom: 2.4rem;
 }
@@ -69,6 +93,81 @@ body {
   font-size: 2.4rem;
 }
 
+.summary-box {
+  padding: 3.2rem;
+}
+
+/**************************************/
+/* Components */
+
+/* Report */
+.report {
+  padding: 1.8rem;
+  background-color: var(--light-red);
+  border-radius: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.report:not(:last-of-type) {
+  margin-bottom: 1.6rem;
+}
+
+.report:last-of-type {
+  margin-bottom: 2.4rem;
+}
+
+.report-label {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.report-score {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Button */
+.btn {
+  border: none;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 700;
+  padding: 1.6rem 3.2rem;
+  border-radius: 50rem;
+}
+
+.btn-primary {
+  color: var(--white);
+  cursor: pointer;
+  background-color: var(--dark-navy);
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background-image: var(--gradient-bg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-block {
+  width: 100%;
+}
+
 /**************************************/
 /* Utils classes */
 
@@ -92,4 +191,112 @@ body {
 
 .text-lightblue {
   color: var(--light-blue);
+}
+
+.text-darknavy {
+  color: var(--dark-navy);
+}
+
+.text-red {
+  color: var(--red);
+}
+
+.text-lightnavy {
+  color: var(--light-navy);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-blue {
+  color: var(--blue);
+}
+
+/**************************************/
+/* Responsive styling */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .container {
+    padding: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card {
+    max-width: 40rem;
+    margin: auto;
+    border-radius: 3.2rem;
+    overflow: hidden;
+    box-shadow: 0 3rem 6rem rgba(61, 108, 236, 0.15);
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    max-width: 73.6rem;
+    display: flex;
+  }
+
+  .result-box {
+    flex: 1;
+    border-radius: 3.2rem;
+  }
+
+  .summary-box {
+    flex: 1;
+  }
+  .report:last-of-type {
+    margin-bottom: 4rem;
+  }
+
+  .result-box,
+  .summary-box {
+    padding: 4.8rem 4rem;
+  }
+
+  .result-box-title,
+  .summary-box-title {
+    font-size: 2.4rem;
+  }
+
+  .result-box-title {
+    margin-bottom: 3.6rem;
+  }
+
+  .score-circle {
+    width: 20rem;
+    height: 20rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .score {
+    font-size: 7.2rem;
+  }
+
+  .result-text {
+    margin-bottom: 1.4rem;
+  }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
 }
